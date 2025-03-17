@@ -1,8 +1,11 @@
+"use client";
 import Link from "next/link"
 import { ChevronRight, Linkedin, Search, Users, BarChart2, Globe, ArrowRight } from "lucide-react"
 import Image from "next/image"
+import { useState } from "react";
 
 export default function Home() {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
   return (
     <div className="flex flex-col min-h-screen">
       {/* Top banner */}
@@ -15,54 +18,83 @@ export default function Home() {
       </div>
 
       <header className="bg-white py-4 px-4 md:px-8 border-b border-gray-100 sticky top-0 z-50">
-      <div className="container mx-auto flex flex-col md:flex-row items-center justify-between">
-        <div className="flex items-center mb-4 md:mb-0">
-          <Link href="/" className="text-2xl font-bold text-[#5e2750] mr-8 flex items-center">
-            <Image
-              src="/images/ConecSi.png" 
-              alt="Logo de Conecsi"
-              width={80}
-              height={80}
-              className="mr-2"
-            />
-            {/* Si también quieres el texto "Conecsi", descomenta estas líneas */}
-            {/* <span className="text-3xl font-extrabold">C</span>
-            <span className="text-2xl">onecsi</span> */}
-          </Link>
-          <nav className="hidden md:flex space-x-8">
-            <Link href="#" className="text-gray-700 hover:text-[#5e2750] font-medium transition-colors">
-              Inicio
-            </Link>
-            <Link href="#" className="text-gray-700 hover:text-[#5e2750] font-medium transition-colors">
-              Nuestros Servicios
-            </Link>
-            <Link href="#" className="text-gray-700 hover:text-[#5e2750] font-medium transition-colors">
-              Ofertas de trabajo
-            </Link>
-            <Link href="#" className="text-gray-700 hover:text-[#5e2750] font-medium transition-colors">
-              Contacto
-            </Link>
-          </nav>
-        </div>
-        <div className="flex space-x-3">
-          <button className="bg-[#00b8a9] text-white px-5 py-2.5 rounded-full text-sm font-medium shadow-sm hover:bg-[#009b8f] transition-colors">
-            Postulá tu CV
-          </button>
-          <button className="bg-[#5e2750] text-white px-5 py-2.5 rounded-full text-sm font-medium shadow-sm hover:bg-[#4e2042] transition-colors">
-            Encuentra Mayor Talento
-          </button>
-        </div>
-        <button className="md:hidden mt-4 p-2 rounded-full bg-gray-100 hover:bg-gray-200 transition-colors">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            className="h-6 w-6"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
+      <div className="container mx-auto flex items-center justify-between">
+        {/* Logo */}
+        <Link href="/" className="flex items-center">
+          <Image
+            src="/images/ConecSi.png"
+            alt="Logo de Conecsi"
+            width={60}
+            height={60}
+            className="mr-2"
+          />
+        </Link>
+
+        {/* Menú de navegación (visible solo en pantallas grandes o al hacer clic en móviles) */}
+        <nav
+          className={`${
+            isMenuOpen ? 'block' : 'hidden'
+          } md:flex md:space-x-8 absolute md:static top-16 left-0 w-full md:w-auto bg-white md:bg-transparent p-4 md:p-0 shadow-md md:shadow-none ${
+            isMenuOpen ? 'border-t border-gray-100' : ''
+          }`}
+        >
+          <Link
+            href="#"
+            className="block md:inline-block text-gray-700 hover:text-[#5e2750] font-medium transition-colors py-2 md:py-0"
           >
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-          </svg>
-        </button>
+            Inicio
+          </Link>
+          <Link
+            href="#"
+            className="block md:inline-block text-gray-700 hover:text-[#5e2750] font-medium transition-colors py-2 md:py-0"
+          >
+            Nuestros Servicios
+          </Link>
+          <Link
+            href="#"
+            className="block md:inline-block text-gray-700 hover:text-[#5e2750] font-medium transition-colors py-2 md:py-0"
+          >
+            Ofertas de trabajo
+          </Link>
+          <Link
+            href="#"
+            className="block md:inline-block text-gray-700 hover:text-[#5e2750] font-medium transition-colors py-2 md:py-0"
+          >
+            Contacto
+          </Link>
+        </nav>
+
+        {/* Botones y hamburguesa */}
+        <div className="flex items-center space-x-3">
+          {/* Botones */}
+          <button className="bg-[#00b8a9] text-white px-4 py-2 rounded-full text-xs md:text-sm font-medium shadow-sm hover:bg-[#009b8f] transition-colors">
+            Postula tu CV
+          </button>
+          <button className="bg-[#5e2750] text-white px-4 py-2 rounded-full text-xs md:text-sm font-medium shadow-sm hover:bg-[#4e2042] transition-colors">
+            Encuentra el Mejor Talento
+          </button>
+
+          {/* Botón de hamburguesa (visible solo en móviles) */}
+          <button
+            className="md:hidden p-2 rounded-full bg-gray-100 hover:bg-gray-200 transition-colors"
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-6 w-6"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M4 6h16M4 12h16M4 18h16"
+              />
+            </svg>
+          </button>
+        </div>
       </div>
     </header>
 
@@ -83,7 +115,7 @@ export default function Home() {
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
                 <button className="bg-[#00b8a9] text-white px-8 py-4 rounded-full text-lg font-medium shadow-lg hover:bg-[#009b8f] transition-all hover:shadow-xl">
-                  Encuentra Mayor Talento
+                  Encuentra el Mejor Talento
                 </button>
                 {/* <button className="bg-white/10 backdrop-blur-sm text-white border border-white/20 px-8 py-4 rounded-full text-lg font-medium hover:bg-white/20 transition-all">
                   Conoce más
@@ -205,10 +237,10 @@ export default function Home() {
                   </p>
                   <div className="flex flex-col space-y-2">
                     <button className="bg-[#5e2750] text-white px-4 py-2.5 rounded-full text-sm font-medium w-full hover:bg-[#4e2042] transition-colors">
-                      Encuentra Mayor Talento
+                      Encuentra el Mejor Talento
                     </button>
                     <button className="bg-[#00b8a9] text-white px-4 py-2.5 rounded-full text-sm font-medium w-full hover:bg-[#009b8f] transition-colors">
-                      Postulá tu CV
+                      Postula tu CV
                     </button>
                   </div>
                 </div>
@@ -230,10 +262,10 @@ export default function Home() {
                   </p>
                   <div className="flex flex-col space-y-2">
                     <button className="bg-[#5e2750] text-white px-4 py-2.5 rounded-full text-sm font-medium w-full hover:bg-[#4e2042] transition-colors">
-                      Encuentra Mayor Talento
+                      Encuentra el Mejor Talento
                     </button>
                     <button className="bg-[#00b8a9] text-white px-4 py-2.5 rounded-full text-sm font-medium w-full hover:bg-[#009b8f] transition-colors">
-                      Postulá tu CV
+                      Postula tu CV
                     </button>
                   </div>
                 </div>
@@ -255,10 +287,10 @@ export default function Home() {
                   </p>
                   <div className="flex flex-col space-y-2">
                     <button className="bg-[#5e2750] text-white px-4 py-2.5 rounded-full text-sm font-medium w-full hover:bg-[#4e2042] transition-colors">
-                      Encuentra Mayor Talento
+                      Encuentra el Mejor Talento
                     </button>
                     <button className="bg-[#00b8a9] text-white px-4 py-2.5 rounded-full text-sm font-medium w-full hover:bg-[#009b8f] transition-colors">
-                      Postulá tu CV
+                      Postula tu CV
                     </button>
                   </div>
                 </div>
@@ -454,7 +486,7 @@ export default function Home() {
                   Encuentra el Mejor Talento
                 </button>
                 <button className="bg-[#5e2750] text-white px-8 py-4 rounded-full text-lg font-medium shadow-lg hover:bg-[#4e2042] transition-all">
-                  Postulá tu CV
+                  Postula tu CV
                 </button>
               </div>
             </div>
@@ -463,98 +495,106 @@ export default function Home() {
       </main>
 
       {/* Footer */}
-      <footer className="bg-[#2e1226] text-white py-16 px-4">
-        <div className="container mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 mb-12">
-            <div>
+      <footer className="bg-[#2e1226] text-white py-6 px-4 md:py-10 md:px-6">
+      <div className="container mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-10">
+          {/* Columna 1: Logo y texto */}
+          <div className="mb-6 md:mb-0">
             <Image
               src="/images/ConecSi.png"
               alt="Logo de Conecsi"
               width={100}
               height={100}
-              className="mr-2 mb-4"
+              className="mb-4"
             />
-              <p className="text-gray-300 mb-6 max-w-md">
-                Conectamos talento con oportunidades. Somos expertos en reclutamiento y selección de personal para
-                empresas líderes.
-              </p>
-              <div className="space-y-4">
-                <p className="text-[#00b8a9] font-medium">Encuentra mayor talento para tu equipo</p>
-                <p className="text-[#7fdfd6] font-medium">Encuentra un empleo que se alinee con tus metas</p>
-              </div>
-            </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              <div>
-                <h4 className="text-lg font-bold mb-6">Newsletter</h4>
-                <p className="text-gray-300 mb-4">Recibe nuestras novedades y ofertas de empleo</p>
-                <div className="flex flex-col sm:flex-row gap-2">
-                  <input
-                    type="email"
-                    placeholder="Tu email"
-                    className="bg-[#3e1934] text-white px-4 py-3 rounded-full focus:outline-none focus:ring-2 focus:ring-[#00b8a9] flex-grow"
-                  />
-                  <button className="bg-[#00b8a9] text-white px-6 py-3 rounded-full font-medium hover:bg-[#009b8f] transition-colors">
-                    Suscribete
-                  </button>
-                </div>
-              </div>
-              <div>
-                <h4 className="text-lg font-bold mb-6">Enlaces rápidos</h4>
-                <ul className="space-y-3">
-                  <li>
-                    <Link href="#" className="text-gray-300 hover:text-white transition-colors">
-                      FAQ
-                    </Link>
-                  </li>
-                  <li>
-                    <Link href="#" className="text-gray-300 hover:text-white transition-colors">
-                      Ofertas de empleo
-                    </Link>
-                  </li>
-                  <li>
-                    <Link href="#" className="text-gray-300 hover:text-white transition-colors">
-                      Política de privacidad
-                    </Link>
-                  </li>
-                  <li>
-                    <Link href="#" className="text-gray-300 hover:text-white transition-colors">
-                      Términos y condiciones
-                    </Link>
-                  </li>
-                  <li>
-                    <Link href="#" className="text-gray-300 hover:text-white transition-colors">
-                      Blog
-                    </Link>
-                  </li>
-                </ul>
-              </div>
+            <p className="text-gray-300 mb-4 max-w-xs">
+              Conectamos talento con oportunidades. Somos expertos en reclutamiento y selección de personal para
+              empresas líderes.
+            </p>
+            <div className="space-y-2">
+              <p className="text-[#00b8a9] font-medium">Encuentra el mejor talento para tu equipo</p>
+              <p className="text-[#7fdfd6] font-medium">Encuentra un empleo que se alinee con tus metas</p>
             </div>
           </div>
 
-          <div className="border-t border-[#3e1934] pt-8">
-            <div className="flex flex-col md:flex-row justify-between items-center">
-              <div className="mb-4 md:mb-0">
-                <Link href="/" className="text-2xl font-bold text-white inline-block">
-                  Conecsi
-                </Link>
-              </div>
-              <div className="flex space-x-6">
-                <Link href="#" className="text-gray-300 hover:text-white transition-colors">
-                  <Linkedin className="h-6 w-6" />
-                </Link>
-                <Link href="#" className="text-gray-300 hover:text-white transition-colors">
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
-                  </svg>
-                </Link>
-              </div>
+          {/* Columna 2: Newsletter */}
+          <div className="mb-6 md:mb-0">
+            <h4 className="text-lg font-bold mb-4">Newsletter</h4>
+            <p className="text-gray-300 mb-4">Recibe nuestras novedades y ofertas de empleo</p>
+            <div className="flex flex-col md:flex-row gap-2">
+              <input
+                type="email"
+                placeholder="Tu email"
+                className="bg-[#3e1934] text-white px-3 py-2 rounded-full focus:outline-none focus:ring-2 focus:ring-[#00b8a9] w-full"
+              />
+              <button className="bg-[#00b8a9] text-white px-4 py-2 rounded-full font-medium hover:bg-[#009b8f] transition-colors w-full md:w-auto">
+                Suscribete
+              </button>
             </div>
-            <p className="text-gray-400 text-sm text-center md:text-left mt-6">
-              &copy; {new Date().getFullYear()} Conecsi. Todos los derechos reservados.
-            </p>
+          </div>
+
+          {/* Columna 3: Enlaces rápidos */}
+          <div>
+            <h4 className="text-lg font-bold mb-4">Enlaces rápidos</h4>
+            <ul className="space-y-3">
+              <li>
+                <Link href="#" className="text-gray-300 hover:text-white transition-colors">
+                  FAQ
+                </Link>
+              </li>
+              <li>
+                <Link href="#" className="text-gray-300 hover:text-white transition-colors">
+                  Ofertas de empleo
+                </Link>
+              </li>
+              <li>
+                <Link href="#" className="text-gray-300 hover:text-white transition-colors">
+                  Política de privacidad
+                </Link>
+              </li>
+              <li>
+                <Link href="#" className="text-gray-300 hover:text-white transition-colors">
+                  Términos y condiciones
+                </Link>
+              </li>
+              <li>
+                <Link href="#" className="text-gray-300 hover:text-white transition-colors">
+                  Blog
+                </Link>
+              </li>
+            </ul>
           </div>
         </div>
-      </footer>
+
+        <div className="border-t border-[#3e1934] pt-4 mt-6">
+          <div className="flex flex-col md:flex-row justify-between items-center">
+            <div className="mb-4 md:mb-0">
+              <Link href="/" className="text-2xl font-bold text-white inline-block">
+                Conecsi
+              </Link>
+            </div>
+            <div className="flex space-x-6">
+              <Link href="#" className="text-gray-300 hover:text-white transition-colors">
+                <Linkedin className="h-6 w-6" />
+              </Link>
+              <Link href="#" className="text-gray-300 hover:text-white transition-colors">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="h-6 w-6"
+                  fill="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+                </svg>
+              </Link>
+            </div>
+          </div>
+          <p className="text-gray-400 text-sm text-center md:text-left mt-4">
+            © {new Date().getFullYear()} Conecsi. Todos los derechos reservados.
+          </p>
+        </div>
+      </div>
+    </footer>
     </div>
   )
 }
