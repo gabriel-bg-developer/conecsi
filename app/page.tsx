@@ -1,5 +1,6 @@
 import Link from "next/link"
 import { ChevronRight, Linkedin, Search, Users, BarChart2, Globe, ArrowRight } from "lucide-react"
+import Image from "next/image"
 
 export default function Home() {
   return (
@@ -13,50 +14,57 @@ export default function Home() {
         </div>
       </div>
 
-      {/* Header */}
       <header className="bg-white py-4 px-4 md:px-8 border-b border-gray-100 sticky top-0 z-50">
-        <div className="container mx-auto flex flex-col md:flex-row items-center justify-between">
-          <div className="flex items-center mb-4 md:mb-0">
-            <Link href="/" className="text-2xl font-bold text-[#5e2750] mr-8 flex items-center">
-              <span className="text-3xl font-extrabold">C</span>
-              <span className="text-2xl">onecsi</span>
+      <div className="container mx-auto flex flex-col md:flex-row items-center justify-between">
+        <div className="flex items-center mb-4 md:mb-0">
+          <Link href="/" className="text-2xl font-bold text-[#5e2750] mr-8 flex items-center">
+            <Image
+              src="/images/ConecSi.png" 
+              alt="Logo de Conecsi"
+              width={80}
+              height={80}
+              className="mr-2"
+            />
+            {/* Si también quieres el texto "Conecsi", descomenta estas líneas */}
+            {/* <span className="text-3xl font-extrabold">C</span>
+            <span className="text-2xl">onecsi</span> */}
+          </Link>
+          <nav className="hidden md:flex space-x-8">
+            <Link href="#" className="text-gray-700 hover:text-[#5e2750] font-medium transition-colors">
+              Inicio
             </Link>
-            <nav className="hidden md:flex space-x-8">
-              <Link href="#" className="text-gray-700 hover:text-[#5e2750] font-medium transition-colors">
-                Inicio
-              </Link>
-              <Link href="#" className="text-gray-700 hover:text-[#5e2750] font-medium transition-colors">
-                Nuestros Servicios
-              </Link>
-              <Link href="#" className="text-gray-700 hover:text-[#5e2750] font-medium transition-colors">
-                Ofertas de trabajo
-              </Link>
-              <Link href="#" className="text-gray-700 hover:text-[#5e2750] font-medium transition-colors">
-                Contacto
-              </Link>
-            </nav>
-          </div>
-          <div className="flex space-x-3">
-            <button className="bg-[#00b8a9] text-white px-5 py-2.5 rounded-full text-sm font-medium shadow-sm hover:bg-[#009b8f] transition-colors">
-              Postulá tu CV
-            </button>
-            <button className="bg-[#5e2750] text-white px-5 py-2.5 rounded-full text-sm font-medium shadow-sm hover:bg-[#4e2042] transition-colors">
-              Encuentra Mayor Talento
-            </button>
-          </div>
-          <button className="md:hidden mt-4 p-2 rounded-full bg-gray-100 hover:bg-gray-200 transition-colors">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-6 w-6"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-            </svg>
+            <Link href="#" className="text-gray-700 hover:text-[#5e2750] font-medium transition-colors">
+              Nuestros Servicios
+            </Link>
+            <Link href="#" className="text-gray-700 hover:text-[#5e2750] font-medium transition-colors">
+              Ofertas de trabajo
+            </Link>
+            <Link href="#" className="text-gray-700 hover:text-[#5e2750] font-medium transition-colors">
+              Contacto
+            </Link>
+          </nav>
+        </div>
+        <div className="flex space-x-3">
+          <button className="bg-[#00b8a9] text-white px-5 py-2.5 rounded-full text-sm font-medium shadow-sm hover:bg-[#009b8f] transition-colors">
+            Postulá tu CV
+          </button>
+          <button className="bg-[#5e2750] text-white px-5 py-2.5 rounded-full text-sm font-medium shadow-sm hover:bg-[#4e2042] transition-colors">
+            Encuentra Mayor Talento
           </button>
         </div>
-      </header>
+        <button className="md:hidden mt-4 p-2 rounded-full bg-gray-100 hover:bg-gray-200 transition-colors">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            className="h-6 w-6"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+        </button>
+      </div>
+    </header>
 
       <main>
         {/* Hero Section */}
@@ -77,9 +85,9 @@ export default function Home() {
                 <button className="bg-[#00b8a9] text-white px-8 py-4 rounded-full text-lg font-medium shadow-lg hover:bg-[#009b8f] transition-all hover:shadow-xl">
                   Encuentra Mayor Talento
                 </button>
-                <button className="bg-white/10 backdrop-blur-sm text-white border border-white/20 px-8 py-4 rounded-full text-lg font-medium hover:bg-white/20 transition-all">
+                {/* <button className="bg-white/10 backdrop-blur-sm text-white border border-white/20 px-8 py-4 rounded-full text-lg font-medium hover:bg-white/20 transition-all">
                   Conoce más
-                </button>
+                </button> */}
               </div>
             </div>
           </div>
@@ -90,9 +98,9 @@ export default function Home() {
         <section className="py-20 px-4 bg-[#f8f5f9]">
           <div className="container mx-auto">
             <div className="flex flex-col items-center mb-16">
-              <div className="inline-block px-3 py-1 bg-[#5e2750]/10 text-[#5e2750] rounded-full text-sm font-medium mb-4">
+              {/* <div className="inline-block px-3 py-1 bg-[#5e2750]/10 text-[#5e2750] rounded-full text-sm font-medium mb-4">
                 SERVICIOS
-              </div>
+              </div> */}
               <h2 className="text-3xl md:text-4xl font-bold text-center mb-4 text-gray-800">NUESTROS SERVICIOS</h2>
               <div className="w-20 h-1 bg-[#00b8a9] mb-6"></div>
               <p className="text-gray-600 text-center max-w-2xl">
@@ -165,9 +173,9 @@ export default function Home() {
         <section className="py-20 px-4 bg-[#eef8f7]">
           <div className="container mx-auto">
             <div className="flex flex-col items-center mb-16">
-              <div className="inline-block px-3 py-1 bg-[#00b8a9]/10 text-[#00b8a9] rounded-full text-sm font-medium mb-4">
+              {/* <div className="inline-block px-3 py-1 bg-[#00b8a9]/10 text-[#00b8a9] rounded-full text-sm font-medium mb-4">
                 INDUSTRIAS
-              </div>
+              </div> */}
               <h2 className="text-3xl md:text-4xl font-bold text-center mb-4 text-gray-800">
                 INDUSTRIAS EN LAS QUE NOS ENFOCAMOS
               </h2>
@@ -269,9 +277,9 @@ export default function Home() {
         <section className="py-20 px-4 bg-gradient-to-br from-[#5e2750]/10 to-[#5e2750]/5">
           <div className="container mx-auto">
             <div className="flex flex-col items-center mb-16">
-              <div className="inline-block px-3 py-1 bg-[#5e2750]/10 text-[#5e2750] rounded-full text-sm font-medium mb-4">
+              {/* <div className="inline-block px-3 py-1 bg-[#5e2750]/10 text-[#5e2750] rounded-full text-sm font-medium mb-4">
                 ¿POR QUÉ NOSOTROS?
-              </div>
+              </div> */}
               <h2 className="text-3xl md:text-4xl font-bold text-center mb-4 text-gray-800">¿POR QUÉ CONECSI?</h2>
               <div className="w-20 h-1 bg-[#00b8a9] mb-6"></div>
               <p className="text-gray-600 text-center max-w-2xl">
@@ -333,9 +341,9 @@ export default function Home() {
         <section className="py-20 px-4 bg-white">
           <div className="container mx-auto">
             <div className="flex flex-col items-center mb-16">
-              <div className="inline-block px-3 py-1 bg-[#00b8a9]/10 text-[#00b8a9] rounded-full text-sm font-medium mb-4">
+              {/* <div className="inline-block px-3 py-1 bg-[#00b8a9]/10 text-[#00b8a9] rounded-full text-sm font-medium mb-4">
                 TESTIMONIOS
-              </div>
+              </div> */}
               <h2 className="text-3xl md:text-4xl font-bold text-center mb-4 text-gray-800">HISTORIAS DE ÉXITO</h2>
               <div className="w-20 h-1 bg-[#5e2750] mb-6"></div>
               <p className="text-gray-600 text-center max-w-2xl">
@@ -348,7 +356,12 @@ export default function Home() {
               <div className="bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-all border border-gray-100 hover:border-[#5e2750]/20">
                 <div className="flex flex-col md:flex-row">
                   <div className="md:w-2/5 relative">
-                    <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80')] bg-cover bg-center"></div>
+                    <div className="
+                    absolute inset-0
+                   bg-[url('https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80')] 
+                    bg-cover bg-center">
+
+                    </div>
                     <div className="relative md:hidden aspect-video"></div>
                     <div className="hidden md:block relative h-full"></div>
                   </div>
@@ -383,7 +396,9 @@ export default function Home() {
               <div className="bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-all border border-gray-100 hover:border-[#5e2750]/20">
                 <div className="flex flex-col md:flex-row">
                   <div className="md:w-2/5 relative">
-                    <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1580927752452-89d86da3fa0a?q=80')] bg-cover bg-center"></div>
+                    <div className="absolute inset-0 
+                    bg-[url('/images/developer.jpg')] 
+                    bg-cover bg-center"></div>
                     <div className="relative md:hidden aspect-video"></div>
                     <div className="hidden md:block relative h-full"></div>
                   </div>
@@ -436,7 +451,7 @@ export default function Home() {
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <button className="bg-white text-[#00b8a9] px-8 py-4 rounded-full text-lg font-medium shadow-lg hover:bg-gray-100 transition-all">
-                  Encuentra Mayor Talento
+                  Encuentra el Mejor Talento
                 </button>
                 <button className="bg-[#5e2750] text-white px-8 py-4 rounded-full text-lg font-medium shadow-lg hover:bg-[#4e2042] transition-all">
                   Postulá tu CV
@@ -452,7 +467,13 @@ export default function Home() {
         <div className="container mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 mb-12">
             <div>
-              <h3 className="text-xl font-bold mb-6">Conecsi</h3>
+            <Image
+              src="/images/ConecSi.png"
+              alt="Logo de Conecsi"
+              width={100}
+              height={100}
+              className="mr-2 mb-4"
+            />
               <p className="text-gray-300 mb-6 max-w-md">
                 Conectamos talento con oportunidades. Somos expertos en reclutamiento y selección de personal para
                 empresas líderes.
